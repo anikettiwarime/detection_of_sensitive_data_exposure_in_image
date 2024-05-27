@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Sensitivity Prediction</title>
+  </head>
+  <body>
+    <h1>Text Sensitivity Prediction</h1>
+    <form
+      action="{% url '' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <label for="file">Upload Image:</label>
+      <input type="file" name="file" id="file" accept="image/*" />
+      <br />
+      <br />
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <h2>Prediction Result:</h2>
+    <p>Extracted Text: {{ prediction.text }}</p>
+    <p>Sensitivity: {{ prediction.sensitivity }}</p>
+    {% endif %}
+  </body>
+</html>
